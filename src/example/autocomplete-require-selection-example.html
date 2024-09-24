@@ -1,4 +1,4 @@
-Control value: {{myControl.value || 'empty'}}
+Control value: {{myControl.value?.value || 'empty'}}
 
 <form class="example-form">
   <mat-form-field class="example-full-width">
@@ -18,9 +18,10 @@ Control value: {{myControl.value || 'empty'}}
       requireSelection
       autoActiveFirstOption
       #auto="matAutocomplete"
+      [displayWith]="displayOption"
     >
       @for (option of filteredOptions; track option) {
-      <mat-option [value]="option">{{option}}</mat-option>
+      <mat-option [value]="option">{{option.value}}</mat-option>
       }
     </mat-autocomplete>
   </mat-form-field>
